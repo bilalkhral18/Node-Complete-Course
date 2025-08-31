@@ -1,0 +1,90 @@
+<%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <main class="flex justify-center items-center min-h-screen bg-orange-50">
+      <div class="bg-white shadow-xl rounded-2xl p-10 w-full max-w-lg">
+        <h1 class="text-3xl font-bold text-[#f57842] mb-6 text-center">
+          Register Your Home
+        </h1>
+
+        <form action="/host/home_Added_Successfully" method="post" class="space-y-5">
+          <!-- House Name -->
+          <div>
+            <label for="houseName" class="block text-sm font-medium text-gray-600 mb-1">House Name</label>
+            <input
+              type="text"
+              name="houseName"
+              id="houseName"
+              placeholder="Enter House Name"
+              class="w-full border-2 border-orange-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#f57842] focus:border-[#f57842] placeholder-gray-400"
+            />
+          </div>
+
+          <!-- Price -->
+          <div>
+            <label for="price" class="block text-sm font-medium text-gray-600 mb-1">Price (PKR)</label>
+            <input
+              type="number"
+              name="price"
+              id="price"
+              placeholder="Enter Price"
+              class="w-full border-2 border-orange-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#f57842] focus:border-[#f57842] placeholder-gray-400"
+            />
+          </div>
+
+          <!-- Location -->
+          <div>
+            <label for="location" class="block text-sm font-medium text-gray-600 mb-1">Location</label>
+            <input
+              type="text"
+              name="location"
+              id="location"
+              placeholder="Enter Location"
+              class="w-full border-2 border-orange-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#f57842] focus:border-[#f57842] placeholder-gray-400"
+            />
+          </div>
+
+          <!-- Rating -->
+          <div>
+            <label for="rating" class="block text-sm font-medium text-gray-600 mb-1">Rating</label>
+            <input
+              type="number"
+              name="rating"
+              id="rating"
+              placeholder="Enter Rating (1-5)"
+              class="w-full border-2 border-orange-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#f57842] focus:border-[#f57842] placeholder-gray-400"
+            />
+          </div>
+
+          <!-- Image Upload -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Upload Image</label>
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              class="w-full text-sm text-gray-600 border-2 border-orange-200 rounded-xl px-4 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#f57842] focus:border-[#f57842]"
+            />
+          </div>
+
+          <!-- Preview (Optional static placeholder for now) -->
+          <div class="flex justify-center">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1689609950112-d66095626efb?q=80&w=600&auto=format&fit=crop"
+              alt="Home Preview"
+              class="rounded-xl shadow-md max-h-48 object-cover"
+            />
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="w-full bg-[#f57842] hover:bg-orange-600 text-white font-semibold py-3 rounded-xl transition duration-300 cursor-pointer"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
