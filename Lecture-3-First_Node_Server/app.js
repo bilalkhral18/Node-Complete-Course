@@ -1,11 +1,13 @@
+// Core Modules
 const http = require("http");
 
-function requestListener(req, res) {
+// Now I have to create a http server
+const server = http.createServer((req, res) => {
   console.log(req);
-}
+});
 
-const server = http.createServer(requestListener);
-const PORT = 3400;
+const PORT = 3300;
+// Now Server is started listening on a PORT 3300
 server.listen(PORT, () => {
-  console.log(`Server listen on a port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
