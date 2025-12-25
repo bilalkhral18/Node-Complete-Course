@@ -1,47 +1,42 @@
 const http = require("http");
-const fs = require("fs");
-const server = http.createServer((req, res) => {
+
+const SERVER = http.createServer((req, res) => {
   console.log(req.url, req.method, req.headers);
-  const url = req.url.toLowerCase();
+  let url = req.url.toLowerCase();
+  res.setHeader("content-type", "text/html");
+  res.write("<html>");
+  res.write("<head><title>Myntra App</title></head>");
+  res.write("<body>");
   if (url === "/" || url === "/home") {
-    res.setHeader("content-type", "text/html");
-    res.write("<html>");
-    res.write("<head><title>Myntra App</title></head>");
-    res.write("<body>");
-    res.write("<h1>Welcome to Home Page</h1>");
-    res.write("<ol type='A'>");
-    res.write("<li><a href='/home'>Home</a></li>");
-    res.write("<li><a href='/men'>Men</a></li>");
-    res.write("<li><a href='/women'>Women</a></li>");
-    res.write("<li><a href='/kids'>Kids</a></li>");
-    res.write("<li><a href='/cart'>Cart</a></li>");
-    res.write("</ol>");
-    res.write("</body>");
-    res.write("</html>");
-    return res.end();
+    res.write(`<header>
+      <nav>
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/men">Men</a></li>
+          <li><a href="/women">Women</a></li>
+          <li><a href="/kids">Kids</a></li>
+          <li><a href="/cart">Cart</a></li>
+        </ul>
+      </nav>
+    </header>`);
   } else if (url === "/men") {
-    res.write("<h1>Welcome to the men's section</h1>");
-    res.write("<a href='/'>Go back to home</a>");
-    return res.end();
+    res.write("<h2>Wellcome to the Mens Section</h2>");
   } else if (url === "/women") {
-    res.write("<h1>Welcome to the women's section</h1>");
-    res.write("<a href='/'>Go back to home</a>");
-    return res.end();
+    res.write("<h2>Wellcome to the Women Section</h2>");
   } else if (url === "/kids") {
-    res.write("<h1>Welcome to the kids' section</h1>");
-    res.write("<a href='/'>Go back to home</a>");
-    return res.end();
+    res.write("<h2>Wellcome to the Kids Section</h2>");
   } else if (url === "/cart") {
-    res.write("<h1>Welcome to the cart</h1>");
-    res.write("<a href='/'>Go back to home</a>");
-    return res.end();
+    res.write("<h2>Wellcome to the Cart Section</h2>");
   } else {
-    res.write("<h1>404 Not Found</h1>");
-    res.write("<a href='/'>Go back to home</a>");
-    return res.end();
+    res.write("<h2>Error 404</h2>");
+    res.statusCode = 404;
   }
+  res.write("</body>");
+  res.write("</html>");
+  return res.end();
 });
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+const PORT = 3201;
+SERVER.listen(PORT, () => {
+  console.log("sever is runing on a PORT", PORT);
 });
