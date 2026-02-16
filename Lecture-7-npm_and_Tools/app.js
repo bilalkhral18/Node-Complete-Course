@@ -1,11 +1,10 @@
-// CORE MODULE
 const http = require("http");
-// LOCAL MODULE
+
 const SERVER = http.createServer((req, res) => {
-  console.log(req.url, req.method);
+  console.log(req.url);
 });
 
-const PORT = 3202;
+const PORT = 3301;
 SERVER.listen(PORT, () => {
-  console.log(`server listen on a Port ${PORT}`);
+  console.log(`server listen on a port http://${PORT}`);
 });
