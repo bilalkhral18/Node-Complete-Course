@@ -1,4 +1,7 @@
-const syntax = () => {
-  console.log("module export successfully");
+const testingsyntax = () => {
+  console.log(" I am inside a testing syntax");
 };
-module.exports = { syntax };
+
+module.exports = {
+  syntax: testingsyntax,
+};

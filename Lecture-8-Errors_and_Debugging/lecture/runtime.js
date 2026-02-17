@@ -1,6 +1,5 @@
-const runtime = () => {
-  // console.log(x);
-  let jsonString = "{myname:'bilal'}";
-  // JSON.parse(jsonString);
+const testruntime = () => {
+  console.log(x);
 };
-module.exports = { runtime };
+
+module.exports = { runtime: testruntime };

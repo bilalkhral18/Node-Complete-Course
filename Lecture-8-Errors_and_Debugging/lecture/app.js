@@ -1,15 +1,19 @@
+// Internal Module
 const http = require("http");
+// Local Module
 const { syntax } = require("./syntax");
 const { runtime } = require("./runtime");
-const { logicalErrors } = require("./logical");
-const server = http.createServer((req, res) => {
-  console.log(req.url);
-  syntax();
-  runtime();
-  logicalErrors();
+const testlogical = require("./logical");
+// Creating Server
+const Server = http.createServer((req, res) => {
+  console.log(req.url, req.method);
+  // syntax();
+  // runtime();
+  testlogical();
 });
 
-const PORT = 3004;
-server.listen(PORT, () => {
-  console.log(`server listen on a port ${PORT}`);
+// Server Start listening
+const PORT = 3204;
+Server.listen(PORT, () => {
+  console.log(`Server listen on a ${PORT} Port no`);
 });

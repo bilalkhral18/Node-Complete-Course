@@ -1,15 +1,15 @@
 {
   "name": "error-and-debugging",
   "version": "1.0.0",
-  "description": "This is the project about error and how to debug the errors",
+  "description": "This project is all about errors and debugging",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
-  "author": "bilal ahmad",
+  "author": "Bilal",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.11"
   }
 }
