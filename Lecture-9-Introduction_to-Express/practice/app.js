@@ -1,58 +1,46 @@
-//             External Module
+// External module
 const express = require("express");
-
+// server creation
 const app = express();
 
 app.use((req, res, next) => {
-  console.log(req.url, req.method, "req came in first middleware");
+  console.log("came in first middleware", req.path, req.method);
   next();
 });
 app.use((req, res, next) => {
-  console.log(req.url, req.method, "req came in second middleware");
+  console.log("came in second middleware", req.path, req.method);
   next();
 });
 app.use((req, res, next) => {
-  console.log(req.url, req.method, "req came in third middleware");
-  // res.send("<p>Response Send Successfully</p>");
+  console.log("came in third middleware", req.path, req.method);
+  // res.send("response send correctly thanks for your service");
   next();
 });
 app.get("/", (req, res, next) => {
-  console.log(req.url, req.method, "req came in fifth middleware");
-  res.send(`<p>Wellcome to home page</p> 
-  <a href=/contact-us>contact-us</a>
-    `);
-  // next();
+  console.log("came in fourth  middleware", req.path, req.method);
+  res.send(`<p>Wellcome to the home page</p>
+    <button>
+      <a href="/contact-us">contact-us</a>
+    </button>`);
+  next();
 });
 app.get("/contact-us", (req, res, next) => {
-  console.log(req.url, req.method, "req came in sixth middleware");
-  res.send(` <form action="/contact-us" method="post">
-      <label for="username"
-        >Enter your name:
-        <input
-          type="text"
-          name="username"
-          placeholder="Enter your name"
-          id="username"
-        />
+  console.log("came in fifth  middleware", req.path, req.method);
+  res.send(`<form action="/contact-us" method="POST">
+      <label for="name"
+        >Full_Name:
+        <input type="text" name="Full_Name" id="name" />
       </label>
-      <label for="userEmail"
-        >Enter your Email:
-        <input
-          type="email"
-          name="userEmail"
-          placeholder="example@gmail.com"
-          id="userEmail"
-        />
+      <label for="email"
+        >Email:
+        <input type="email" name="email" id="email" />
       </label>
-    <button>submit</button>
+      <button type="submit">submit</button>
     </form>`);
-  // next();
 });
 app.post("/contact-us", (req, res, next) => {
-  console.log(req.url, req.method, "req came in seventh middleware");
-  res.send("<p>page submit sucessfully</p>");
+  res.send("<p>form submit seuccessfully</p>");
 });
-const PORT = 3200;
-app.listen(PORT, () => {
-  console.log(`server listen on a PORT ${PORT}`);
+app.listen(3400, () => {
+  console.log("server listen on a port 3400");
 });

@@ -1,7 +1,12 @@
 {
-  "name": "practice",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "name": "pratice_project_of_express",
   "version": "1.0.0",
-  "description": "This is the practice set of introduction to express",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +14,5 @@
   },
   "author": "bilal",
   "license": "ISC",
-  "dependencies": {
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10"
-  }
+  "description": ""
 }

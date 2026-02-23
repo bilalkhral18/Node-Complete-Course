@@ -1,21 +1,29 @@
-//     CORE Module
+// CORE Module
 const http = require("http");
-//     External Module
+// EXTERNAL Module
 const express = require("express");
+// Local Module
+const requestHandler = require("./user");
 
 const app = express();
-
-app.use((req, res, next) => {
+app.get("/", (req, res, next) => {
   console.log("came in first middleware", req.url, req.method);
+  // res.send("<P>Wellcome to first middleware</p>");
   next();
 });
-app.use((req, res, next) => {
+app.post("/submit_details", (req, res, next) => {
   console.log("came in second middleware", req.url, req.method);
-  res.send("<p>Response from 2nd middleware</p>");
+  res.send("<P>Wellcome to node.js coding series</p>");
 });
-const server = http.createServer(app);
+app.use("/", (req, res, next) => {
+  console.log("came in last middleware", req.url, req.method);
+  // res.send("<P>Wellcome to first middleware</p>");
+  next();
+});
+// const Server = http.createServer(app);
 
-const PORT = 3200;
-server.listen(PORT, () => {
-  console.log(`server listen on PORT ${PORT}`);
+// Server Start listening
+const PORT = 3204;
+app.listen(PORT, () => {
+  console.log(`Server listen on a ${PORT} Port no`);
 });

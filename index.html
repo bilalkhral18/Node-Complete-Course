@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,33 +6,20 @@
     <title>Document</title>
   </head>
   <body>
-    <header>
-      <input type="text" name="" id="" value="male" />
-      <nav>
-        <ul>
-          <li><a href="/home">Home</a></li>
-          <li><a href="/men">Men</a></li>
-          <li><a href="/women">Women</a></li>
-          <li><a href="/kids">Kids</a></li>
-          <li><a href="/cart">Cart</a></li>
-        </ul>
-        <form action="/calculate-result" method="POST">
-          <label for="num1"
-            >Num1:
-            <input
-              type="number"
-              name="Num1"
-              id="num1"
-              placeholder="Enter num1" /></label
-          >\
-          <label for="num2"
-            >Num2:
-            <input type="number" name="Num2" id="num2" placeholder="Enter num2"
-          /></label>
-          <button type="submit">Sum</button>
-        </form>
-      </nav>
-    </header>
+    <form action="/contact-us" method="POST">
+      <label for="name"
+        >Full_Name:
+        <input type="text" name="Full_Name" id="name" />
+      </label>
+      <label for="email"
+        >Email:
+        <input type="email" name="email" id="email" />
+      </label>
+      <button type="submit">submit</button>
+    </form>
+    <button>
+      <a href="/contact-us">contact-us</a>
+    </button>
     <!-- <a href=""></a> -->
   </body>
 </html>
