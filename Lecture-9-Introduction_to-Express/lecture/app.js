@@ -2,8 +2,6 @@
 const http = require("http");
 // EXTERNAL Module
 const express = require("express");
-// Local Module
-const requestHandler = require("./user");
 
 const app = express();
 app.get("/", (req, res, next) => {
