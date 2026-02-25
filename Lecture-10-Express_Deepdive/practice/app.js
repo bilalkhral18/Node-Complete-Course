@@ -1,22 +1,25 @@
-//             External Module
+// External module
 const express = require("express");
-const bodyParser = require("body-parser");
+// Local MOdule
+const homeRouter = require("./routes/homeRouter");
+const contactRouter = require("./routes/contactRouter");
+// server creation
+const app = express();
 // Core Module
 const path = require("path");
+// Local Module
 const rootDir = require("./utils/utilsPath");
-//Local Modules
-const homeRouter = require("./routes/homeRouter");
-const formRouter = require("./routes/formRouter");
-const app = express();
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
+// for data getting from user in the form of url encoded
+// app.use(express.urlencoded({ extended: true }));
+// This is also valid for body parsing
+// External Module
+const body_parser = require("body-parser");
+app.use(body_parser.urlencoded({ extended: true }));
 app.use(homeRouter);
-app.use("/user", formRouter);
+app.use(contactRouter);
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(rootDir, "views", "404.html"));
 });
-const PORT = 3200;
-app.listen(PORT, () => {
-  console.log(`server listen on a PORT ${PORT}`);
+app.listen(3400, () => {
+  console.log("server listen on a port 3400");
 });
