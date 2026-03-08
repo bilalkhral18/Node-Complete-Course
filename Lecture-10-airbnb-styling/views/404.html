@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found · Airbnb</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --rose: #e8184d;
+        --rose-dark: #c0133e;
+        --cream: #fdf6ef;
+        --charcoal: #1a1a2e;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background-color: var(--charcoal);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* Noise */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Grid lines */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(232, 24, 77, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(232, 24, 77, 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .blob-tl {
+        position: fixed;
+        top: -20%;
+        left: -10%;
+        width: 550px;
+        height: 550px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 40% 40%,
+          rgba(232, 24, 77, 0.13),
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .blob-br {
+        position: fixed;
+        bottom: -20%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 60% 60%,
+          rgba(232, 24, 77, 0.09),
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+        animation: drift 8s ease-in-out infinite alternate;
+      }
+      @keyframes drift {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(-20px, -20px);
+        }
+      }
+
+      /* Header */
+      header {
+        position: relative;
+        z-index: 10;
+        background: rgba(26, 26, 46, 0.75);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(232, 24, 77, 0.12);
+      }
+      .logo {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--rose);
+        letter-spacing: -0.02em;
+        text-decoration: none;
+        position: relative;
+      }
+      .logo::after {
+        content: "★";
+        font-size: 0.42rem;
+        position: absolute;
+        top: 7px;
+        right: -9px;
+        color: var(--rose);
+        opacity: 0.55;
+      }
+      .nav-link {
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(253, 246, 239, 0.4);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .nav-link:hover {
+        color: var(--rose);
+      }
+
+      /* Stage */
+      .stage {
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      /* Giant 404 */
+      .giant-404 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(8rem, 22vw, 18rem);
+        font-weight: 700;
+        line-height: 0.85;
+        letter-spacing: -0.04em;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(232, 24, 77, 0.25);
+        position: relative;
+        user-select: none;
+        margin-bottom: 1rem;
+        animation: fadeUp 0.8s ease both;
+      }
+      /* Rose filled overlay — creates depth */
+      .giant-404::after {
+        content: "404";
+        position: absolute;
+        inset: 0;
+        -webkit-text-stroke: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(232, 24, 77, 0.18) 0%,
+          transparent 60%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--rose);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 1.2rem;
+        animation: fadeUp 0.7s 0.15s ease both;
+      }
+      .eyebrow::before,
+      .eyebrow::after {
+        content: "";
+        display: block;
+        width: 1.8rem;
+        height: 1px;
+        background: var(--rose);
+      }
+
+      .error-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 600;
+        color: var(--cream);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+        animation: fadeUp 0.7s 0.2s ease both;
+      }
+      .error-title em {
+        font-style: italic;
+        color: var(--rose);
+      }
+
+      .error-sub {
+        font-size: 0.93rem;
+        color: rgba(253, 246, 239, 0.32);
+        font-weight: 300;
+        max-width: 360px;
+        margin: 0 auto 3rem;
+        line-height: 1.85;
+        animation: fadeUp 0.7s 0.25s ease both;
+      }
+
+      /* Button */
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: var(--rose);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2.2rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s;
+        clip-path: polygon(
+          0 0,
+          calc(100% - 10px) 0,
+          100% 10px,
+          100% 100%,
+          10px 100%,
+          0 calc(100% - 10px)
+        );
+        animation: fadeUp 0.7s 0.3s ease both;
+      }
+      .btn-home::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--rose-dark);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .btn-home:hover::before {
+        transform: scaleX(1);
+      }
+      .btn-home span,
+      .btn-home svg {
+        position: relative;
+        z-index: 1;
+      }
+      .btn-home svg {
+        transition: transform 0.3s;
+      }
+      .btn-home:hover svg {
+        transform: translateX(-4px);
+      }
+
+      /* Suggestions */
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 420px;
+        margin: 3rem auto 2rem;
+        animation: fadeUp 0.7s 0.4s ease both;
+      }
+      .divider-line {
+        flex: 1;
+        height: 1px;
+        background: rgba(253, 246, 239, 0.06);
+      }
+      .divider-text {
+        font-size: 0.65rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(253, 246, 239, 0.2);
+        white-space: nowrap;
+      }
+
+      .suggestions {
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        animation: fadeUp 0.7s 0.45s ease both;
+      }
+      .suggestion-link {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: rgba(253, 246, 239, 0.25);
+        font-size: 0.73rem;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .suggestion-link:hover {
+        color: var(--rose);
+      }
+      .suggestion-link svg {
+        transition: color 0.3s;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 1.2rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        color: rgba(253, 246, 239, 0.15);
+        border-top: 1px solid rgba(253, 246, 239, 0.04);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blob-tl"></div>
+    <div class="blob-br"></div>
+
+    <!-- HEADER -->
+    <header>
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.1rem 2rem;
+        "
+      >
+        <a href="/" class="logo">airbnb</a>
+        <nav style="display: flex; gap: 2.5rem; align-items: center">
+          <a href="/" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Explore</a>
+          <a href="#" class="nav-link">Hosting</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="stage">
+      <div class="giant-404">404</div>
+
+      <div class="eyebrow">Page not found</div>
+
+      <h1 class="error-title">
+        You've wandered<br />somewhere <em>unmapped.</em>
+      </h1>
+
+      <p class="error-sub">
+        The page you're looking for doesn't exist, may have been moved, or is
+        temporarily unavailable.
+      </p>
+
+      <a href="/" class="btn-home">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        <span>Go Back Home</span>
+      </a>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-text">Or try one of these</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="suggestions">
+        <a href="#" class="suggestion-link">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          Explore stays
+        </a>
+        <a href="/host/add-home" class="suggestion-link">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          List your home
+        </a>
+        <a href="#" class="suggestion-link">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            />
+          </svg>
+          Contact support
+        </a>
+      </div>
+    </main>
+
+    <footer>© 2026 Airbnb Clone. All rights reserved.</footer>
+  </body>
+</html>
