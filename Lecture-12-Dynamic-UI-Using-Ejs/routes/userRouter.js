@@ -6,9 +6,14 @@ const path = require("path");
 const userRouter = express.Router();
 // Local Module
 const rootdir = require("../utils/pathUtils");
+const { registeredHomes } = require("./hostRouter");
 
 userRouter.get("/", (req, res, next) => {
-  res.sendFile(path.join(rootdir, "views", "home.html"));
+  console.log(registeredHomes);
+  res.render("home", {
+    homes: registeredHomes,
+    pagetitle: "Airbnb - Where You Find Home",
+  });
 });
 
 module.exports = userRouter;

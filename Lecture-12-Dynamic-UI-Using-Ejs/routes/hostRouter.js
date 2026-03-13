@@ -6,11 +6,13 @@ const hostRouter = express.Router();
 // Local Module
 const rootdir = require("../utils/pathUtils");
 hostRouter.get("/add-home", (req, res, next) => {
-  res.sendFile(path.join(rootdir, "views", "addHome.html"));
+  res.render("addHome", { pagetitle: "Add Home — Airbnb" });
 });
+const registeredHomes = [];
 hostRouter.post("/add-home", (req, res, next) => {
-  console.log(req.body);
-  res.sendFile(path.join(rootdir, "views", "homeAdded.html"));
+  // console.log(req.body);
+  registeredHomes.push(req.body);
+  res.render("homeAdded", { pagetitle: "Home Registered — Airbnb" });
 });
 
-module.exports = hostRouter;
+module.exports = { hostRouter, registeredHomes };

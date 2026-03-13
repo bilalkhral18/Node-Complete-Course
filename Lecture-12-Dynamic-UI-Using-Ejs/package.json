@@ -16,6 +16,7 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.2.1",
     "autoprefixer": "^10.4.27",
+    "ejs": "^5.0.1",
     "express": "^5.2.1",
     "postcss": "^8.5.8"
   }

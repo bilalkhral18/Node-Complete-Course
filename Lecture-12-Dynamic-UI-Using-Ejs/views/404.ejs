@@ -1,10 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 — Page Not Found · Airbnb</title>
-    <link rel="stylesheet" href="/output.css" />
+<%- include("./partials/head")%>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500&display=swap"
@@ -350,13 +344,7 @@
     <div class="blob-br"></div>
 
     <!-- HEADER -->
-    <header>
-      <div class="bg-[#b14400] p-4">
-        <span class="ml-8 flex gap-x-[2rem] text-white">
-          <a href="/">Go To Home</a><a href="/host/add-home">Add Home</a>
-        </span>
-      </div>
-    </header>
+    <%- include("./partials/nav")%>
 
     <!-- MAIN -->
     <main class="stage">
