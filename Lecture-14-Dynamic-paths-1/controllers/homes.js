@@ -34,13 +34,14 @@ exports.getHomeList = (req, res, next) => {
     });
   });
 };
+
 exports.getHomeDetails = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
-    console.log(req.params);
+  let homeId = req.params.homeId;
+  Home.findById(homeId, (homeDetails) => {
     res.render("store/home-detail", {
-      homes: registeredHomes,
-      pagetitle: "Home Detail — Airbnb",
-      currentPage: "Home Detail",
+      home: homeDetails[0],
+      pagetitle: "Home Detail - airbnb",
+      currentPage: "home-list",
     });
   });
 };

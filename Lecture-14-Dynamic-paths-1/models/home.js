@@ -14,6 +14,7 @@ module.exports = class Home {
       (this.photoUrl = photoUrl));
   }
   save() {
+    this.id = Date.now().toString(36) + Math.random().toString(36).slice(2);
     Home.fetchAll((registeredHomes) => {
       registeredHomes.push(this);
       const filePath = path.join(rootdir, "data", "homes.json");
@@ -30,6 +31,12 @@ module.exports = class Home {
     const filePath = path.join(rootdir, "data", "homes.json");
     fs.readFile(filePath, (err, data) => {
       callback(!err ? JSON.parse(data) : []);
+    });
+  }
+  static findById(homeId, callback) {
+    Home.fetchAll((homes) => {
+      let homeDetails = homes.filter((home) => home.id == homeId);
+      callback(homeDetails);
     });
   }
 };

@@ -1,4 +1,3 @@
-const { randomUUID } = require("crypto");
 const Home = require("../models/home");
 exports.getAddHome = (req, res, next) => {
   res.render("host/addHome", {
@@ -8,13 +7,13 @@ exports.getAddHome = (req, res, next) => {
 };
 
 exports.postAddHome = (req, res, next) => {
-  const id = randomUUID(); // e.g. "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+  console.log(req.body);
   let { houseName, price, location, rating, photoUrl } = req.body;
-  let home = new Home(id, houseName, price, location, rating, photoUrl);
+  let home = new Home(houseName, price, location, rating, photoUrl);
   home.save();
   res.render("host/homeAdded", {
     pagetitle: "Home Registered — Airbnb",
-    currentPage: "Home Registered",
+    currentPage: "Register Successfully",
   });
 };
 
