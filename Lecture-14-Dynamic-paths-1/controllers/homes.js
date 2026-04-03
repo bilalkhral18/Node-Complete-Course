@@ -38,10 +38,14 @@ exports.getHomeList = (req, res, next) => {
 exports.getHomeDetails = (req, res, next) => {
   let homeId = req.params.homeId;
   Home.findById(homeId, (homeDetails) => {
-    res.render("store/home-detail", {
-      home: homeDetails[0],
-      pagetitle: "Home Detail - airbnb",
-      currentPage: "home-list",
-    });
+    if (!homeDetails || homeDetails.length === 0) {
+      return res.redirect("/homes");
+    } else {
+      res.render("store/home-detail", {
+        home: homeDetails[0],
+        pagetitle: "Home Detail - airbnb",
+        currentPage: "home-list",
+      });
+    }
   });
 };

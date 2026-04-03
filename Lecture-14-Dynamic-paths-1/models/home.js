@@ -5,9 +5,8 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = class Home {
-  constructor(id, houseName, price, location, rating, photoUrl) {
-    ((this.id = id),
-      (this.houseName = houseName),
+  constructor(houseName, price, location, rating, photoUrl) {
+    ((this.houseName = houseName),
       (this.price = price),
       (this.location = location),
       (this.rating = rating),
