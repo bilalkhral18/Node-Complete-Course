@@ -1,12 +1,12 @@
 <form action="/favourites" method="POST">
   <input type="text" name="id" value="<%= home.id %>" hidden />
   <button
-    class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 active:translate-y-0"
+    class="<%= favclass %>"
     style="
       background-color: #1a1a1a;
       box-shadow: 0 4px 20px rgba(26, 26, 26, 0.18);
     "
   >
-    Mark Favourite
+    Favourite
   </button>
 </form>

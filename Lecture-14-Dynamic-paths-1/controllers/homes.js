@@ -1,19 +1,11 @@
 const Home = require("../models/home");
+const Favourite = require("../models/favourites");
 exports.getIndexHomes = (req, res, next) => {
   Home.fetchAll((registeredHomes) => {
     res.render("store/index", {
       homes: registeredHomes,
       pagetitle: "Airbnb - Where You Find Home",
       currentPage: "airbnb index",
-    });
-  });
-};
-exports.getFavourites = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
-    res.render("store/favourite-list", {
-      homes: registeredHomes,
-      pagetitle: "Favourites — Airbnb",
-      currentPage: "favourites",
     });
   });
 };
@@ -47,5 +39,29 @@ exports.getHomeDetails = (req, res, next) => {
         currentPage: "home-list",
       });
     }
+  });
+};
+
+exports.getFavourites = (req, res, next) => {
+  Home.fetchAll((registeredHomes) => {
+    Favourite.getFavourites((favourites) => {
+      const getFavouriteData = registeredHomes.filter((home) =>
+        favourites.includes(home.id),
+      );
+      res.render("store/favourite-list", {
+        favouriteHomes: getFavouriteData,
+        pagetitle: "Favourites — Airbnb",
+        currentPage: "favourites",
+      });
+    });
+  });
+};
+exports.postAddToFavourites = (req, res, next) => {
+  const id = req.body.id;
+  Favourite.addToFavourites(id, (error) => {
+    if (error) {
+      console.log("this id is already added in a favourite", error);
+    }
+    res.redirect("/favourites");
   });
 };
