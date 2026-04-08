@@ -30,4 +30,12 @@ module.exports = class Favourite {
       }
     });
   }
+  static deleteFromFavourites(homeId, callback) {
+    Favourite.getFavourites((favouriteIds) => {
+      favouriteIds = favouriteIds.filter(
+        (favouriteId) => favouriteId !== homeId,
+      );
+      fs.writeFile(favouritefilePath, JSON.stringify(favouriteIds), callback);
+    });
+  }
 };

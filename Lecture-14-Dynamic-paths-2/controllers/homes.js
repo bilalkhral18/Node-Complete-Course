@@ -65,3 +65,12 @@ exports.postAddToFavourites = (req, res, next) => {
     res.redirect("/favourites");
   });
 };
+exports.postRemoveFromFavourites = (req, res, next) => {
+  const homeId = req.params.homeId;
+  Favourite.deleteFromFavourites(homeId, (error) => {
+    if (error) {
+      console.log("this id is already added in a favourite", error);
+    }
+    res.redirect("/favourites");
+  });
+};

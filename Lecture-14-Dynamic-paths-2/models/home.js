@@ -1,5 +1,6 @@
 // Local Module
 const rootdir = require("../utils/pathUtils");
+const Favourite = require("../models/favourites");
 // CORE Module
 const fs = require("fs");
 const path = require("path");
@@ -40,6 +41,14 @@ module.exports = class Home {
     Home.fetchAll((homes) => {
       let homeDetails = homes.filter((home) => home.id == homeId);
       callback(homeDetails);
+    });
+  }
+  static deleteHome(homeId, callback) {
+    Home.fetchAll((registeredHomes) => {
+      registeredHomes = registeredHomes.filter((home) => home.id !== homeId);
+      fs.writeFile(filePath, JSON.stringify(registeredHomes), (error) => {
+        Favourite.deleteFromFavourites(homeId, callback);
+      });
     });
   }
 };

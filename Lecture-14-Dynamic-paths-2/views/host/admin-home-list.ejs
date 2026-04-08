@@ -52,7 +52,10 @@
       <a href="/host/edit-home/<%= home.id %>?editing=true">
    <button class="bg-blue-700  p-1 px-5 rounded-2xl mt-4" >Edit</button>
   </a>
-     <button class="bg-red-600  p-1 px-5 rounded-2xl mt-4" >Delete</button>
+  <form action="/host/delete-home/<%= home.id %>" method="POST">
+    <!-- <input type="hidden" name="homeId" value=""> -->
+     <button type="submit" class="bg-red-600  p-1 px-5 rounded-2xl mt-4" >Delete</button>
+     </form>
     </li>
   <% }) %>
 </ul>
