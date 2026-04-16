@@ -5,4 +5,4 @@ const pool = mysql.createPool({
   password: "hosteljinnah2018@",
   database: "airbnb",
 });
-module.exports= 
+module.exports = pool.promise();

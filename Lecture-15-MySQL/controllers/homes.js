@@ -1,7 +1,8 @@
 const Home = require("../models/home");
 const Favourite = require("../models/favourites");
 exports.getIndexHomes = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
+  Home.fetchAll().then(([registeredHomes, fields]) => {
+    console.log(registeredHomes);
     res.render("store/index", {
       homes: registeredHomes,
       pagetitle: "Airbnb - Where You Find Home",
