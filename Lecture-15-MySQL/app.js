@@ -8,6 +8,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 // Local Module
+
 const storeRouter = require("./routes/storeRouter");
 const { hostRouter } = require("./routes/hostRouter");
 const rootdir = require("./utils/pathUtils");

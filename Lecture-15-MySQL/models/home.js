@@ -1,3 +1,4 @@
+// Local Module
 const db = require("../utils/databaseUtils");
 module.exports = class Home {
   constructor(houseName, price, location, rating, photoUrl) {
@@ -7,12 +8,9 @@ module.exports = class Home {
       (this.rating = rating),
       (this.photoUrl = photoUrl));
   }
-  save() {
-    // .then(([rows, fields]) => console.log("Getting Data", rows))
-    // .catch((error) => console.log("Error while getting data from db", error));
-  }
+  save() {}
   static fetchAll() {
-    return db.execute("SELECT * FROM homes");
+    return db.execute("SELECT * from homes");
   }
   static findById(homeId, callback) {}
   static deleteHome(homeId, callback) {}

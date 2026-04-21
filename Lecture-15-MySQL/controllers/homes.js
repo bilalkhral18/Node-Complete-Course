@@ -1,8 +1,7 @@
 const Home = require("../models/home");
 const Favourite = require("../models/favourites");
 exports.getIndexHomes = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes, fields]) => {
-    console.log(registeredHomes);
+  Home.fetchAll().then(([registeredHomes]) => {
     res.render("store/index", {
       homes: registeredHomes,
       pagetitle: "Airbnb - Where You Find Home",
@@ -19,7 +18,7 @@ exports.getBookings = (req, res, next) => {
 };
 
 exports.getHomeList = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
+  Home.fetchAll().then(([registeredHomes]) => {
     res.render("store/home-list", {
       homes: registeredHomes,
       pagetitle: "Available Homes — Airbnb",
@@ -27,7 +26,6 @@ exports.getHomeList = (req, res, next) => {
     });
   });
 };
-
 exports.getHomeDetails = (req, res, next) => {
   let homeId = req.params.homeId;
   Home.findById(homeId, (homeDetails) => {
@@ -44,7 +42,7 @@ exports.getHomeDetails = (req, res, next) => {
 };
 
 exports.getFavourites = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
+  Home.fetchAll().then(([registeredHomes]) => {
     Favourite.getFavourites((favourites) => {
       const getFavouriteData = registeredHomes.filter((home) =>
         favourites.includes(home.id),

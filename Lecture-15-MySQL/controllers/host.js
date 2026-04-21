@@ -41,7 +41,7 @@ exports.postAddHome = (req, res, next) => {
 };
 
 exports.hostHomeList = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
+  Home.fetchAll().then(([registeredHomes]) => {
     res.render("host/admin-home-list", {
       homes: registeredHomes,
       pagetitle: "Host Home List - Airbnb",
