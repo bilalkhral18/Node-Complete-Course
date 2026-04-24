@@ -33,7 +33,7 @@ exports.postEditHome = (req, res, next) => {
   res.redirect("/host/host-home-list");
 };
 exports.postAddHome = (req, res, next) => {
-  // console.log(req.body);
+  console.log(req.body);
   let { houseName, price, location, rating, photoUrl } = req.body;
   let home = new Home(houseName, price, location, rating, photoUrl);
   home.save();

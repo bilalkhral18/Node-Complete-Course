@@ -1,13 +1,17 @@
 const Home = require("../models/home");
 const Favourite = require("../models/favourites");
 exports.getIndexHomes = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes]) => {
-    res.render("store/index", {
-      homes: registeredHomes,
-      pagetitle: "Airbnb - Where You Find Home",
-      currentPage: "airbnb index",
+  Home.fetchAll()
+    .then(([registeredHomes]) => {
+      res.render("store/index", {
+        homes: registeredHomes,
+        pagetitle: "Airbnb - Where You Find Home",
+        currentPage: "airbnb index",
+      });
+    })
+    .catch((error) => {
+      console.log("error while saving", error);
     });
-  });
 };
 
 exports.getBookings = (req, res, next) => {
@@ -18,17 +22,22 @@ exports.getBookings = (req, res, next) => {
 };
 
 exports.getHomeList = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes]) => {
-    res.render("store/home-list", {
-      homes: registeredHomes,
-      pagetitle: "Available Homes — Airbnb",
-      currentPage: "home-list",
+  Home.fetchAll()
+    .then(([registeredHomes]) => {
+      res.render("store/home-list", {
+        homes: registeredHomes,
+        pagetitle: "Available Homes — Airbnb",
+        currentPage: "home-list",
+      });
+    })
+    .catch((error) => {
+      console.log("error while saving", error);
     });
-  });
 };
 exports.getHomeDetails = (req, res, next) => {
   let homeId = req.params.homeId;
-  Home.findById(homeId, (homeDetails) => {
+  Home.findById(homeId).then(([homeDetails]) => {
+    console.log(homeDetails);
     if (!homeDetails || homeDetails.length === 0) {
       return res.redirect("/homes");
     } else {
@@ -42,18 +51,22 @@ exports.getHomeDetails = (req, res, next) => {
 };
 
 exports.getFavourites = (req, res, next) => {
-  Home.fetchAll().then(([registeredHomes]) => {
-    Favourite.getFavourites((favourites) => {
-      const getFavouriteData = registeredHomes.filter((home) =>
-        favourites.includes(home.id),
-      );
-      res.render("store/favourite-list", {
-        favouriteHomes: getFavouriteData,
-        pagetitle: "Favourites — Airbnb",
-        currentPage: "favourites",
+  Home.fetchAll()
+    .then(([registeredHomes]) => {
+      Favourite.getFavourites((favourites) => {
+        const getFavouriteData = registeredHomes.filter((home) =>
+          favourites.includes(home.id),
+        );
+        res.render("store/favourite-list", {
+          favouriteHomes: getFavouriteData,
+          pagetitle: "Favourites — Airbnb",
+          currentPage: "favourites",
+        });
       });
+    })
+    .catch((error) => {
+      console.log("error while saving", error);
     });
-  });
 };
 exports.postAddToFavourites = (req, res, next) => {
   const id = req.body.id;

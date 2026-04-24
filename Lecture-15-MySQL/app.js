@@ -18,6 +18,6 @@ app.use(express.static(path.join(rootdir, "public")));
 app.use(storeRouter);
 app.use("/host", hostRouter);
 app.use(errorController.errorMessage);
-app.listen(3300, () => {
-  console.log("server listen on a port no 3300");
+app.listen(3900, () => {
+  console.log("server listen on a port no 3900");
 });
